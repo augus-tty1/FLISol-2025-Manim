@@ -1,0 +1,142 @@
+\documentclass[14pt, aspectratio=169]{beamer}
+\usetheme{Copenhagen}
+\usecolortheme{spruce}
+
+\usepackage{graphicx}
+\usepackage{verbatim}
+
+\title{Manim}
+\subtitle{Festival Latino-Americano de Instalação de Software Livre}
+\author{Augusto Guerra de Lima}
+\date{Abril, 2025}
+
+\begin{document}
+
+\maketitle
+
+%sobre a apresentacao
+\begin{frame}{Sobre a apresentação}
+\begin{itemize}
+    \item<1-> Esta é uma apresentação introdutória
+   
+    \item<2-> Vamos entender as funcionalidades básicas e fazer exemplos
+
+     \item<3-> Não sou um expert
+\end{itemize}
+\end{frame}
+
+%o q e manim
+\begin{frame}{Sobre Manim}
+
+\begin{itemize}
+    \item<1-> Animar conceitos técnicos é tradicionalmente bastante tedioso, pois pode ser difícil torná-los precisos o suficiente para transmiti-los.
+    \item<2-> Manim é uma biblioteca que se baseia na simplificade do Python para gerar animações programaticamente.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Sobre Manim}
+\begin{itemize}
+    \item<1-> A biblioteca foi criada por \textbf{Grant Sanderson}. (3b1b)
+    \item<2-> Note que, existem duas principais versões. A versão do 3b1b, que se iniciou como um projeto para seu canal no YouTube e a \textbf{Manim community edition} criada em 2020 que é um \textit{fork} da versão do 3b1b; com objetivo de trazer mais estabilidade e testes.
+\end{itemize}
+
+\only<2>{Aqui focaremos na versão da comunidade: https://www.manim.community/}
+
+\only<2>{Versão 3b1b: https://github.com/3b1b/manim}
+\end{frame}
+
+\begin{frame}{Contribuir com o projeto}
+\begin{itemize}
+    \item<1->     Página com instruções para contribuição: https://docs.manim.community/en/stable/contributing.html
+
+    \item<2-> 
+    Mais recomendado, Discord do Manim community edition: https://discord.com/invite/bYCyhM9Kz2
+
+    \item<3-> Quem pode contribuir ?
+
+    Todos! Manim é grátis e open source; Interessados em matemática, pedagogia, animações no computador, open-source, desenvolvimento de software e muito mais são bem vindos!
+\end{itemize}
+\end{frame}
+
+%instalacao
+\begin{frame}{Instalação}
+\begin{itemize}
+    \item<1->     Existem muitas formas diferentes de instalar e utilizar Manim. Exemplos incluem: Localmente, ambiente \textit{Conda}, via \textit{Docker} e \textit{Notebooks Jupyter}.
+    \item<2-> \textit{Notebooks} são indicados para quem quer testar, por exemplo; se você instalar localmente pode preferir fazer um ambiente virtual com Manim lá dentro ou usar Manim como uma ferramenta global se tiver muitos diretórios e projetos, isso vai depender.
+    \item<3-> Tutorial de instalação: https://docs.manim.community/en/stable/installation.html
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Instalação}
+    \begin{itemize}
+        \item Pode ser útil, para quem quiser testar um pouco no \textbf{Google Colaboratory}, colocar o seguinte bloco de comando:
+    \end{itemize}
+    \vspace{0.5em}
+    \begin{verbatim}
+!sudo apt update
+!sudo apt install libcairo2-dev \
+    texlive texlive-latex-extra texlive-fonts-extra \
+    texlive-latex-recommended texlive-science \
+    tipa libpango1.0-dev
+!pip install manim
+!pip install IPython==8.21.0
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}{Instalação}
+    Você vai precisar de instalar:
+    \begin{itemize}
+        \item \texttt{Python}
+        \item \LaTeX (exemplo: \texttt{tex-live}) para escrever coisas como:
+
+        \[e^x = \sum_{n=0}^\infty \frac{x^n}{n!}.\]
+        
+        \item Manim
+    \end{itemize}
+    Fortemente recomendado utilizar um ambiente virtual, exemplo: \texttt{uv}.
+    https://astral.sh/blog/uv
+\end{frame}
+
+\begin{frame}{Cenas e objetos}
+    \begin{itemize}
+        \item<1->\textbf{Scenes}: As cenas são a tela da animação. O objetivo principal é prover ferramentas para lidar com os objetos, câmeras e animações.
+        \item<2->\textbf{Mobjects}: Os objetos matemáticos são efetivamente mostrados na tela. Esses possuem propriedades como posição, dimensão, cor, nome, etc.
+        Qualquer objeto que pode ser exibido na tela é um mobject, mesmo que não seja necessariamente de natureza matemática.
+        \item <3->Pense em uma peça de teatro e os objetos são os atores.
+    \end{itemize}
+\only<3>{rodar o \texttt{ex1.py}}
+\end{frame}
+
+\begin{frame}[fragile]{Saída e diretórios}
+    \begin{verbatim}
+        manim -p -qm ex1.py ex1
+    \end{verbatim}
+    \textbf{Estrutura de diretórios similar:}
+\begin{verbatim}
+my-project/
+├─ex1.py
+└─media
+  ├─videos
+  |  └─scene
+  |     └─720p30
+  |        ├─ex1.mp4
+  |        └─partial_movie_files
+    \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Saída e diretórios}
+    Você pode produzir múltiplos vídeos usando diversas sessões nas cenas
+    \begin{verbatim}
+def construct(self):
+    # ...
+    self.next_section()
+    # algumas coisas aqui ...
+    self.next_section("nome equivalent") #...
+    \end{verbatim}
+Mais informações em: {https://docs.manim.community/en/stable/tutorials/
+output\_and\_config.html\#sections}
+\end{frame}
+
+
+\end{document}
